@@ -17,31 +17,22 @@ namespace fullTime
             InitializeComponent();
         }
 
-        private void btnWhatStatus_Click(object sender, EventArgs e)
+        private void trkCredits_Scroll(object sender, EventArgs e)
         {
-            if (Double.TryParse(txtCredits.Text, out double credits))
+            int credits = trkCredits.Value;
+
+            lblCredits.Text = trkCredits.Value.ToString();
+            if (credits >= 12)
             {
-                // figure out status
-                if (credits >= 12)
-                {
-                    lblStatus.Text = "Full time";
-                }
-                else if (credits >= 6)
-                {
-                    lblStatus.Text = "Half time";
-                }
-                else if (credits >= 0)
-                {
-                    lblStatus.Text = "Less than half time";
-                }
-                else
-                {
-                    MessageBox.Show("Enter a positive number", "Error");
-                }
+                lblStatus.Text = "Full time";
             }
-            else
+            else if (credits >= 6)
             {
-                MessageBox.Show("Enter a numer", "Error");
+                lblStatus.Text = "Half time";
+            }
+            else if (credits >= 0)
+            {
+                lblStatus.Text = "Less than half time";
             }
         }
     }
